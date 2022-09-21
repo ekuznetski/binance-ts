@@ -1,3 +1,42 @@
+# [Front] Simple Wallet Keeper
+
+### This assignment is to build a small frontend that stores user’s wallets securely.
+
+## Task
+
+Your task is to create a simple website that allow users to generate, store and fetch wallets.
+
+**User’s requirements**
+
+- Users would like to click a button to generate a Wallet.
+- Users would like to see a list of generated wallets.
+- Users would like to see their private keys by entering their password.
+- Users would like to see their balance in testnet networks
+
+**Key points:**
+
+- Wallets should be compatible with EVM networks such as **BNB Chain** or **Ethereum**
+- You can store the list of wallets in local storage.
+- You should NOT store user’s passwords.
+- You should NOT store user’s private keys in plaintext.
+
+### What we would like to see
+
+- Testing.
+- Use of React hooks.
+- State management.
+- Architecture considerations.
+- Simplicity.
+
+### Considerations
+
+- We will not focus on design or UI.
+- You can use Next.js or create-react-app to bootstrap your solution.
+- You can use Redux
+- You cannot use a UI kit.
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

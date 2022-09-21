@@ -13,7 +13,6 @@ export const appSlice = createSlice({
   initialState,
   reducers: {
     showModal: (state, { payload, type }: PayloadAction<ReactNode>) => {
-      console.log(type);
       if (payload) {
         state.modal.component = payload;
       } else {
