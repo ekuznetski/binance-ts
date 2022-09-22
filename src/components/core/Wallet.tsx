@@ -9,13 +9,13 @@ import { RevealKeysModal } from "./RevealKeysModal";
 
 const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
   const { showModal } = useModalDispatch();
-  const { setUnhashedKey } = useWalletDispatch();
+  const { setDecryptedKey } = useWalletDispatch();
 
   const showKeyHandler = () => {
     showModal(<RevealKeysModal wallet={wallet} />);
   };
   const hideKeyHandler = () => {
-    setUnhashedKey({ walletAddress: wallet.address, unhashedKey: null });
+    setDecryptedKey({ walletAddress: wallet.address, decryptedKey: null });
   };
   const network = "rinkeby";
   const provider = ethers.getDefaultProvider(network);
@@ -29,17 +29,17 @@ const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
   return (
     <div {...props}>
       <div>{wallet.address}</div>
-      <div>{balance}</div>
+      <div>{balance} ETH</div>
       <div>
-        {wallet.unhashedKey ??
+        {wallet.decryptedKey ??
           "***********************************************************************************"}
       </div>
       <div>
         <Button
           $secondary
-          onClick={wallet.unhashedKey ? hideKeyHandler : showKeyHandler}
+          onClick={wallet.decryptedKey ? hideKeyHandler : showKeyHandler}
         >
-          {wallet.unhashedKey ? "Hide key" : "Reveal key"}
+          {wallet.decryptedKey ? "Hide key" : "Reveal key"}
         </Button>
       </div>
     </div>

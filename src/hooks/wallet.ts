@@ -1,6 +1,6 @@
 import { IWallet } from "../domain/interfaces/wallet.interface";
 import localStorageService from "../services/localStorage.service";
-import { addWalletAction, setUnhashedKeyAction } from "../store/data.slice";
+import { addWalletAction, setDecryptedKeyAction } from "../store/data.slice";
 import { useTypedDispatch, useTypedSelector } from "./store";
 
 export function useWalletsSelector() {
@@ -17,9 +17,9 @@ export function useWalletDispatch() {
     };
   }
   const addWallet = (wallet: IWallet) => dispatch(_addWallet(wallet));
-  const setUnhashedKey = (args: {
+  const setDecryptedKey = (args: {
     walletAddress: string;
-    unhashedKey: string | null;
-  }) => dispatch(setUnhashedKeyAction(args));
-  return { addWallet, setUnhashedKey };
+    decryptedKey: string | null;
+  }) => dispatch(setDecryptedKeyAction(args));
+  return { addWallet, setDecryptedKey };
 }

@@ -10,18 +10,18 @@ import Input from "../shared/Input";
 export const RevealKeysModal = styled(
   ({ wallet, ...props }: { wallet: IWallet }) => {
     const { hideModal } = useModalDispatch();
-    const { setUnhashedKey } = useWalletDispatch();
+    const { setDecryptedKey } = useWalletDispatch();
     const ref = useRef<HTMLInputElement>(null);
     const [error, setError] = useState<string | null>(null);
     const onClickHandler = () => {
       const password = ref.current?.value;
       if (password) {
         passworder
-          .decrypt(password, wallet.hashedKey)
+          .decrypt(password, wallet.encryptedKey)
           .then((decryptedKey) => {
-            setUnhashedKey({
+            setDecryptedKey({
               walletAddress: wallet.address,
-              unhashedKey: decryptedKey,
+              decryptedKey: decryptedKey,
             });
             hideModal();
           })

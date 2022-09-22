@@ -18,19 +18,20 @@ export const dataSlice = createSlice({
         console.error("addWallet payload is empty");
       }
     },
-    setUnhashedKey: (
+    setDecryptedKey: (
       state,
       {
         payload,
       }: PayloadAction<{
         walletAddress: IWallet["address"];
-        unhashedKey: string | null;
+        decryptedKey: string | null;
       }>
     ) => {
       if (payload) {
-        state.wallets[payload.walletAddress].unhashedKey = payload.unhashedKey;
+        state.wallets[payload.walletAddress].decryptedKey =
+          payload.decryptedKey;
       } else {
-        console.error("setUnhashedKey payload is empty");
+        console.error("setDecryptedKey payload is empty");
       }
     },
   },
@@ -38,7 +39,7 @@ export const dataSlice = createSlice({
 
 export const {
   addWallet: addWalletAction,
-  setUnhashedKey: setUnhashedKeyAction,
+  setDecryptedKey: setDecryptedKeyAction,
 } = dataSlice.actions;
 
 export const dataSliceReducer = dataSlice.reducer;

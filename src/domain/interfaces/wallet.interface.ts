@@ -1,5 +1,5 @@
 export interface IWallet {
   address: string;
-  hashedKey: string;
-  unhashedKey?: string | null;
+  encryptedKey: string;
+  decryptedKey?: string | null;
 }
