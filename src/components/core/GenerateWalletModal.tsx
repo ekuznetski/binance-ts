@@ -19,13 +19,10 @@ export const GenerateWalletModal = styled((props) => {
     const password = ref.current?.value;
     if (password) {
       const wallet = ethers.Wallet.createRandom();
-      const hashedPrivateKey = await passworder.encrypt(
-        password,
-        wallet.privateKey
-      );
+      const hashedKey = await passworder.encrypt(password, wallet.privateKey);
       addWallet({
         address: wallet.address,
-        hashedPrivateKey,
+        hashedKey,
       });
       hideModal();
     } else {

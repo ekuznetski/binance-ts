@@ -1,22 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 import { useModalDispatch } from "../../hooks/modal";
-import { useWalletSelector } from "../../hooks/wallet";
+import { useWalletsSelector } from "../../hooks/wallet";
 import Button from "../shared/Button";
 import { GenerateWalletModal } from "./GenerateWalletModal";
 import ModalWrapper from "./ModalWrapper";
 import Wallet from "./Wallet";
 
 const WalletsList = styled((props) => {
-  const wallets = useWalletSelector();
+  const wallets = useWalletsSelector();
+  const walletsArr = Object.values(wallets);
+  console.log(wallets, walletsArr);
   return (
     <div {...props}>
-      {wallets.map((wallet) => (
-        <Wallet key={wallet.address} wallet={wallet} />
-      ))}
+      {walletsArr.length ? (
+        walletsArr.map((wallet) => (
+          <Wallet key={wallet.address} wallet={wallet} />
+        ))
+      ) : (
+        <div className={"noWallets"}>No wallets</div>
+      )}
     </div>
   );
-})``;
+})`
+  .noWallets {
+    text-align: center;
+    margin-top: 40px;
+  }
+`;
 
 const WalletsWrapper = styled((props) => {
   const { showModal } = useModalDispatch();

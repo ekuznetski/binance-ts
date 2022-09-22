@@ -1,9 +1,9 @@
 import { IWallet } from "../domain/interfaces/wallet.interface";
 import localStorageService from "../services/localStorage.service";
-import { addWalletAction } from "../store/data.slice";
-import { useTypedDispatch, useTypedSelector } from "./storeHooks";
+import { addWalletAction, setUnhashedKeyAction } from "../store/data.slice";
+import { useTypedDispatch, useTypedSelector } from "./store";
 
-export function useWalletSelector() {
+export function useWalletsSelector() {
   return useTypedSelector((state) => state.data.wallets);
 }
 
@@ -17,5 +17,9 @@ export function useWalletDispatch() {
     };
   }
   const addWallet = (wallet: IWallet) => dispatch(_addWallet(wallet));
-  return { addWallet }; // i prefer to keep same return pattern in all hooks - dispatcher could have few elements, so we can return object, while selector always will return only one element
+  const setUnhashedKey = (args: {
+    walletAddress: string;
+    unhashedKey: string | null;
+  }) => dispatch(setUnhashedKeyAction(args));
+  return { addWallet, setUnhashedKey };
 }

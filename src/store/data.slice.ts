@@ -13,14 +13,32 @@ export const dataSlice = createSlice({
   reducers: {
     addWallet: (state, { payload }: PayloadAction<IWallet>) => {
       if (payload) {
-        state.wallets.push(payload);
+        state.wallets[payload.address] = payload;
       } else {
         console.error("addWallet payload is empty");
+      }
+    },
+    setUnhashedKey: (
+      state,
+      {
+        payload,
+      }: PayloadAction<{
+        walletAddress: IWallet["address"];
+        unhashedKey: string | null;
+      }>
+    ) => {
+      if (payload) {
+        state.wallets[payload.walletAddress].unhashedKey = payload.unhashedKey;
+      } else {
+        console.error("setUnhashedKey payload is empty");
       }
     },
   },
 });
 
-export const { addWallet: addWalletAction } = dataSlice.actions;
+export const {
+  addWallet: addWalletAction,
+  setUnhashedKey: setUnhashedKeyAction,
+} = dataSlice.actions;
 
 export const dataSliceReducer = dataSlice.reducer;

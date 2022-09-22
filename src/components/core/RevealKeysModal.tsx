@@ -1,26 +1,28 @@
+import passworder from "browser-passworder";
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import { IWallet } from "../../domain/interfaces/wallet.interface";
 import { useModalDispatch } from "../../hooks/modal";
+import { useWalletDispatch } from "../../hooks/wallet";
 import Button from "../shared/Button";
 import Input from "../shared/Input";
 
 export const RevealKeysModal = styled(
-  ({
-    address,
-    cb,
-    ...props
-  }: {
-    address: string;
-    cb: (val: string) => Promise<boolean>;
-  }) => {
+  ({ wallet, ...props }: { wallet: IWallet }) => {
     const { hideModal } = useModalDispatch();
+    const { setUnhashedKey } = useWalletDispatch();
     const ref = useRef<HTMLInputElement>(null);
     const [error, setError] = useState<string | null>(null);
     const onClickHandler = () => {
       const password = ref.current?.value;
       if (password) {
-        cb(password)
-          .then(() => {
+        passworder
+          .decrypt(password, wallet.hashedKey)
+          .then((decryptedKey) => {
+            setUnhashedKey({
+              walletAddress: wallet.address,
+              unhashedKey: decryptedKey,
+            });
             hideModal();
           })
           .catch(() => {
@@ -34,7 +36,7 @@ export const RevealKeysModal = styled(
     return (
       <div {...props}>
         <div className="modalTitle">
-          Type password to show Private Key for wallet <i>{address}</i>
+          Type password to show Private Key for wallet <i>{wallet.address}</i>
         </div>
         <Input
           label="Password"

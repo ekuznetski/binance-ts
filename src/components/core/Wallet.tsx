@@ -1,35 +1,21 @@
-import passworder from "browser-passworder";
 import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { IWallet } from "../../domain/interfaces/wallet.interface";
 import { useModalDispatch } from "../../hooks/modal";
+import { useWalletDispatch } from "../../hooks/wallet";
 import Button from "../shared/Button";
 import { RevealKeysModal } from "./RevealKeysModal";
 
 const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
   const { showModal } = useModalDispatch();
-  const [privateKey, setPrivateKey] = useState(null);
-
-  const revealKey = (password: string) => {
-    return new Promise<boolean>((resolve, reject) => {
-      passworder
-        .decrypt(password, wallet.hashedPrivateKey)
-        .then((e) => {
-          setPrivateKey(e);
-          resolve(true);
-        })
-        .catch((e) => {
-          reject(false);
-        });
-    });
-  };
+  const { setUnhashedKey } = useWalletDispatch();
 
   const showKeyHandler = () => {
-    showModal(<RevealKeysModal address={wallet.address} cb={revealKey} />);
+    showModal(<RevealKeysModal wallet={wallet} />);
   };
   const hideKeyHandler = () => {
-    setPrivateKey(null);
+    setUnhashedKey({ walletAddress: wallet.address, unhashedKey: null });
   };
   const network = "rinkeby";
   const provider = ethers.getDefaultProvider(network);
@@ -45,15 +31,15 @@ const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
       <div>{wallet.address}</div>
       <div>{balance}</div>
       <div>
-        {privateKey ??
+        {wallet.unhashedKey ??
           "***********************************************************************************"}
       </div>
       <div>
         <Button
           $secondary
-          onClick={privateKey ? hideKeyHandler : showKeyHandler}
+          onClick={wallet.unhashedKey ? hideKeyHandler : showKeyHandler}
         >
-          {privateKey ? "Hide key" : "Reveal key"}
+          {wallet.unhashedKey ? "Hide key" : "Reveal key"}
         </Button>
       </div>
     </div>

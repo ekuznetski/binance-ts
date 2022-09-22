@@ -1,6 +1,6 @@
 import { IModal } from "../domain/interfaces/modal.interface";
 import { hideModalAction, showModalAction } from "../store/app.slice";
-import { useTypedDispatch, useTypedSelector } from "./storeHooks";
+import { useTypedDispatch, useTypedSelector } from "./store";
 
 export function useModalDispatch() {
   const dispatch = useTypedDispatch();
