@@ -22,11 +22,12 @@ const Input = styled(
       >,
       ref: ForwardedRef<HTMLInputElement>
     ) => {
+      const id = "input-" + Math.random();
       return (
         <div className={className}>
-          <input {...props} ref={ref} placeholder={"empty"} />
+          <input id={id} {...props} ref={ref} placeholder={"empty"} />
           <div className="error">{error}</div>
-          <label>{label}</label>
+          <label htmlFor={id}>{label}</label>
         </div>
       );
     }

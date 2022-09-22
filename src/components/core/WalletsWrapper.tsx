@@ -10,7 +10,6 @@ import Wallet from "./Wallet";
 const WalletsList = styled((props) => {
   const wallets = useWalletsSelector();
   const walletsArr = Object.values(wallets);
-  console.log(wallets, walletsArr);
   return (
     <div {...props}>
       {walletsArr.length ? (

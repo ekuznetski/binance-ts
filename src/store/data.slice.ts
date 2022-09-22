@@ -3,13 +3,13 @@ import { IDataStore } from "../domain/interfaces/store.interface";
 import { IWallet } from "../domain/interfaces/wallet.interface";
 import localStorageService from "../services/localStorage.service";
 
-const initialState: IDataStore = {
+export const initialDataState: IDataStore = {
   wallets: localStorageService.read(),
 };
 
 export const dataSlice = createSlice({
   name: "data",
-  initialState,
+  initialState: initialDataState,
   reducers: {
     addWallet: (state, { payload }: PayloadAction<IWallet>) => {
       if (payload) {

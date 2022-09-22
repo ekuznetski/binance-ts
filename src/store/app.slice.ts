@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ReactNode } from "react";
 import { IAppStore } from "../domain/interfaces/store.interface";
 
-const initialState: IAppStore = {
+export const initialAppState: IAppStore = {
   modal: {
     component: null,
   },
@@ -10,7 +10,7 @@ const initialState: IAppStore = {
 
 export const appSlice = createSlice({
   name: "app",
-  initialState,
+  initialState: initialAppState,
   reducers: {
     showModal: (state, { payload, type }: PayloadAction<ReactNode>) => {
       if (payload) {

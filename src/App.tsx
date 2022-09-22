@@ -1,9 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
 import WalletsWrapper from "./components/core/WalletsWrapper";
-import { store } from "./store";
+import { setupStore } from "./store";
 
 function App() {
+  const store = setupStore();
   return (
     <Provider store={store}>
       <WalletsWrapper />
