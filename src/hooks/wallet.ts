@@ -1,6 +1,6 @@
 import { IWallet } from "../domain/interfaces/wallet.interface";
+import localStorageService from "../services/localStorage.service";
 import { addWalletAction } from "../store/data.slice";
-import localStorageService from "../utils/localStorage.service";
 import { useTypedDispatch, useTypedSelector } from "./storeHooks";
 
 export function useWalletSelector() {

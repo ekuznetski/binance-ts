@@ -15,7 +15,7 @@ export const GenerateWalletModal = styled((props) => {
   const ref = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const generate = async () => {
+  const generateWallet = async () => {
     const password = ref.current?.value;
     if (password) {
       const wallet = ethers.Wallet.createRandom();
@@ -44,7 +44,7 @@ export const GenerateWalletModal = styled((props) => {
         error={error}
       />
       <div className="buttons">
-        <Button onClick={generate}>Submit</Button>
+        <Button onClick={generateWallet}>Submit</Button>
         <Button $secondary onClick={hideModal}>
           Cancel
         </Button>

@@ -16,7 +16,7 @@ export const RevealKeysModal = styled(
     const { hideModal } = useModalDispatch();
     const ref = useRef<HTMLInputElement>(null);
     const [error, setError] = useState<string | null>(null);
-    const onclickHandler = () => {
+    const onClickHandler = () => {
       const password = ref.current?.value;
       if (password) {
         cb(password)
@@ -44,7 +44,7 @@ export const RevealKeysModal = styled(
           error={error}
         />
         <div className="buttons">
-          <Button onClick={onclickHandler}>Submit</Button>
+          <Button onClick={onClickHandler}>Submit</Button>
           <Button $secondary onClick={hideModal}>
             Cancel
           </Button>

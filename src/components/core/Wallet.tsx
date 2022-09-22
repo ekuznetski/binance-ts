@@ -11,10 +11,10 @@ const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
   const { showModal } = useModalDispatch();
   const [privateKey, setPrivateKey] = useState(null);
 
-  const revealKey = (val) => {
+  const revealKey = (password: string) => {
     return new Promise<boolean>((resolve, reject) => {
       passworder
-        .decrypt(val, wallet.hashedPrivateKey)
+        .decrypt(password, wallet.hashedPrivateKey)
         .then((e) => {
           setPrivateKey(e);
           resolve(true);
@@ -25,10 +25,10 @@ const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
     });
   };
 
-  const showKeysHandler = () => {
+  const showKeyHandler = () => {
     showModal(<RevealKeysModal address={wallet.address} cb={revealKey} />);
   };
-  const hideKeysHandler = () => {
+  const hideKeyHandler = () => {
     setPrivateKey(null);
   };
   const network = "rinkeby";
@@ -51,7 +51,7 @@ const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
       <div>
         <Button
           $secondary
-          onClick={privateKey ? hideKeysHandler : showKeysHandler}
+          onClick={privateKey ? hideKeyHandler : showKeyHandler}
         >
           {privateKey ? "Hide key" : "Reveal key"}
         </Button>

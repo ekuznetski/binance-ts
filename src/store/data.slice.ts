@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IDataStore } from "../domain/interfaces/store.interface";
 import { IWallet } from "../domain/interfaces/wallet.interface";
-import localStorageService from "../utils/localStorage.service";
+import localStorageService from "../services/localStorage.service";
 
 const initialState: IDataStore = {
   wallets: localStorageService.read(),
