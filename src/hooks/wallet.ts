@@ -10,7 +10,7 @@ export function useWalletSelector() {
 export function useWalletDispatch() {
   const dispatch = useTypedDispatch();
 
-  function _addWallet(wallet) {
+  function _addWallet(wallet: IWallet) {
     return function addWalletThunk(dispatch, getState) {
       localStorageService.write(wallet);
       dispatch(addWalletAction(wallet));
