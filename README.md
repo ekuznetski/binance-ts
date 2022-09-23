@@ -37,6 +37,24 @@ Your task is to create a simple website that allow users to generate, store and 
 
 ---
 
+### Some notes:
+
+![img.png](img.png)
+
+when the user generates a new wallet this wallet will be added to the state and at the same time stored to localstorage as object `{address: {address, encryptedKey} }`. By requirements, i can't save the password, and private key as plain text, so i decided to store encrypted key, if the user wants to reveal the key he should decrypt it via password. i used the browser-passworder library for decryption (to be honest i checked that metamask also uses this library, but they forked it because it was updated last time many years ago)
+
+i save decrypted key in store because i need it to pass between components (Wallet and RevealKeyModal), another option to do that without storing - use callback but in this case probably we will have problems with testing
+
+you can see notice in console and in tests, this is because i use ethers formatter without API keys
+
+- make sense to create one modal and pass handlers and some logic by props to avoid code duplicates, but yous asked simplicity
+- probably is not the best option to create modals via wrapper, i could use portals for example. but in case with wrapper i can demonstrate how i work with 2 states in one app, usually i prefer to split state to 2 parts - data from API and app state
+- i covered most critical logic and skipped simple render (eg WalletsList, ModalWrapper components)  
+![img_1.png](img_1.png)
+
+
+--- 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

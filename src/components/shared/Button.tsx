@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, PropsWithChildren } from "react";
 import styled from "styled-components";
 
-const Button = styled(
+export const Button = styled(
   ({
     children,
     ...props
@@ -37,5 +37,3 @@ const Button = styled(
     box-shadow: 0 2px 5px 0 rgba(80, 144, 252, 0.5) inset;
   }
 `;
-
-export default Button;

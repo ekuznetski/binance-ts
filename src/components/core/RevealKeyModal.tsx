@@ -4,10 +4,10 @@ import styled from "styled-components";
 import { IWallet } from "../../domain/interfaces/wallet.interface";
 import { useModalDispatch } from "../../hooks/modal";
 import { useWalletDispatch } from "../../hooks/wallet";
-import Button from "../shared/Button";
-import Input from "../shared/Input";
+import { Button } from "../shared/Button";
+import { Input } from "../shared/Input";
 
-export const RevealKeysModal = styled(
+export const RevealKeyModal = styled(
   ({ wallet, ...props }: { wallet: IWallet }) => {
     const { hideModal } = useModalDispatch();
     const { setDecryptedKey } = useWalletDispatch();

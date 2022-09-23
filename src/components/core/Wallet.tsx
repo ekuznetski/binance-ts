@@ -4,15 +4,15 @@ import styled from "styled-components";
 import { IWallet } from "../../domain/interfaces/wallet.interface";
 import { useModalDispatch } from "../../hooks/modal";
 import { useWalletDispatch } from "../../hooks/wallet";
-import Button from "../shared/Button";
-import { RevealKeysModal } from "./RevealKeysModal";
+import { Button } from "../shared/Button";
+import { RevealKeyModal } from "./RevealKeyModal";
 
-const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
+export const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
   const { showModal } = useModalDispatch();
   const { setDecryptedKey } = useWalletDispatch();
 
   const showKeyHandler = () => {
-    showModal(<RevealKeysModal wallet={wallet} />);
+    showModal(<RevealKeyModal wallet={wallet} />);
   };
   const hideKeyHandler = () => {
     setDecryptedKey({ walletAddress: wallet.address, decryptedKey: null });
@@ -70,5 +70,3 @@ const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
     background-color: rgba(255, 222, 173, 0.3);
   }
 `;
-
-export default Wallet;

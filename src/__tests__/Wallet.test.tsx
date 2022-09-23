@@ -1,6 +1,6 @@
 import { screen, waitFor } from "@testing-library/react";
 import React from "react";
-import Wallet from "../components/core/Wallet";
+import { Wallet } from "../components/core/Wallet";
 import { mockedWallets, renderWithProviders } from "../utils/test.util";
 
 const firstMockedWallet =

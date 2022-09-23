@@ -6,7 +6,7 @@ import {
 } from "react";
 import styled from "styled-components";
 
-const Input = styled(
+export const Input = styled(
   forwardRef(
     (
       {
@@ -83,5 +83,3 @@ const Input = styled(
     }
   }
 `;
-
-export default Input;

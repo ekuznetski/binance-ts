@@ -4,10 +4,8 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useModalDispatch } from "../../hooks/modal";
 import { useWalletDispatch } from "../../hooks/wallet";
-import Button from "../shared/Button";
-import Input from "../shared/Input";
-
-// probably make sense to create one modal and pass handlers and some logic by props to avoid code duplicates
+import { Button } from "../shared/Button";
+import { Input } from "../shared/Input";
 
 export const GenerateWalletModal = styled((props) => {
   const { hideModal } = useModalDispatch();

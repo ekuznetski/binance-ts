@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { useModalDispatch } from "../../hooks/modal";
 import { useWalletsSelector } from "../../hooks/wallet";
-import Button from "../shared/Button";
+import { Button } from "../shared/Button";
 import { GenerateWalletModal } from "./GenerateWalletModal";
-import ModalWrapper from "./ModalWrapper";
-import Wallet from "./Wallet";
+import { ModalWrapper } from "./ModalWrapper";
+import { Wallet } from "./Wallet";
 
 const WalletsList = styled((props) => {
   const wallets = useWalletsSelector();
@@ -28,7 +28,7 @@ const WalletsList = styled((props) => {
   }
 `;
 
-const WalletsWrapper = styled((props) => {
+export const WalletsWrapper = styled((props) => {
   const { showModal } = useModalDispatch();
 
   const generateWalletHandler = () => {
@@ -50,4 +50,3 @@ const WalletsWrapper = styled((props) => {
   padding: 20px;
   margin: auto;
 `;
-export default WalletsWrapper;

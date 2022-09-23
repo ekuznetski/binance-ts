@@ -1,7 +1,7 @@
 import { fireEvent, screen, waitFor } from "@testing-library/react";
 import passworder from "browser-passworder";
 import React from "react";
-import { RevealKeysModal } from "../components/core/RevealKeysModal";
+import { RevealKeyModal } from "../components/core/RevealKeyModal";
 import { setupStore } from "../store";
 import {
   mockedWallets,
@@ -12,7 +12,7 @@ import {
 const store = setupStore(preloadedState);
 const firstMockedWallet =
   mockedWallets["0x327105eD4eEB06709809d657bBdD0900Bab0752A"];
-const component = <RevealKeysModal wallet={firstMockedWallet} />;
+const component = <RevealKeyModal wallet={firstMockedWallet} />;
 const mockedDecryptedKey = "mockedDecryptedKey";
 
 jest.mock("browser-passworder", () => ({
@@ -22,7 +22,7 @@ jest.mock("browser-passworder", () => ({
   },
 }));
 
-describe("RevealKeysModal component", () => {
+describe("RevealKeyModal component", () => {
   it("should show Required field error", () => {
     renderWithProviders(component);
 

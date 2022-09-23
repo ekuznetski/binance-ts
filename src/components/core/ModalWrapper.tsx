@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useModalDispatch, useModalSelector } from "../../hooks/modal";
 
-const ModalWrapper = styled((props) => {
+export const ModalWrapper = styled((props) => {
   const modal = useModalSelector();
   const { hideModal } = useModalDispatch();
   return modal.component ? (
@@ -74,5 +74,3 @@ const ModalWrapper = styled((props) => {
     transform: translateX(-50%);
   }
 `;
-
-export default ModalWrapper;

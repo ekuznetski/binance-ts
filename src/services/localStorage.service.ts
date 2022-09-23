@@ -10,9 +10,7 @@ function write(wallet: IWallet): void {
   data[wallet.address] = wallet;
   localStorage.setItem("wallets", JSON.stringify(data));
 }
-const localStorageService = {
+export const localStorageService = {
   read,
   write,
 };
-
-export default localStorageService;

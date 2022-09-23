@@ -1,5 +1,5 @@
 import { IWallet } from "../domain/interfaces/wallet.interface";
-import localStorageService from "../services/localStorage.service";
+import { localStorageService } from "../services/localStorage.service";
 import { addWalletAction, setDecryptedKeyAction } from "../store/data.slice";
 import { useTypedDispatch, useTypedSelector } from "./store";
 
