@@ -47,6 +47,9 @@ i save decrypted key in store because i need it to pass between components (Wall
 
 you can see notice in console and in tests, this is because i use ethers formatter without API keys
 
+i used **rinkeby** test network 
+
+- in real app better to move wallet logic to custom hook, and we could re-use it
 - make sense to create one modal and pass handlers and some logic by props to avoid code duplicates, but yous asked simplicity
 - probably is not the best option to create modals via wrapper, i could use portals for example. but in case with wrapper i can demonstrate how i work with 2 states in one app, usually i prefer to split state to 2 parts - data from API and app state
 - i covered most critical logic and skipped simple render (eg WalletsList, ModalWrapper components)  

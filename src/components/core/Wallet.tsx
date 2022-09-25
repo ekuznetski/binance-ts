@@ -17,6 +17,7 @@ export const Wallet = styled(({ wallet, ...props }: { wallet: IWallet }) => {
   const hideKeyHandler = () => {
     setDecryptedKey({ walletAddress: wallet.address, decryptedKey: null });
   };
+  // this logic could be moved to custom hook, which accept wallet.address
   const network = "rinkeby";
   const provider = ethers.getDefaultProvider(network);
   const [balance, setBalance] = useState("loading");
